@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0146)http://course.ucas.ac.cn/access/content/attachment/125729/Assignments/d9c2cf76-3176-48fd-a2d3-563f84a201f5/DIMACS%20maximum%20flow%20problems.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<title>DIMACS maximum flow problems</title>
+		<style type="text/css"> BODY { font-family:verdana,arial,helvetica; margin:0; }
+	</style>
+	</head>
+	<body data-pinterest-extension-installed="cr2.0.5">
+		<table style="TABLE-LAYOUT:fixed" class="clsContainer" cellpadding="15" cellspacing="0" width="100%" border="0">
+			<tbody><tr>
+				<td valign="top">
+					<h1 align="left"><u>DIMACS maximum flow problems</u></h1>
+                                        <p>DIMACS (Center for Discrete Mathematics and Theoretical Computer Science (see <a href="http://dimacs.rutgers.edu/">http://dimacs.rutgers.edu/</a>))
+                                           has formulated some 'challenges' for some specific problem instances (see <a href="http://dimacs.rutgers.edu/Challenges/">http://dimacs.rutgers.edu/Challenges/</a>).
+                                           One of these challenges is network flows and matching - the first DIMACS implementation challenge.</p>
+
+                                        <p>One of these network flows are maximum flow problems:<br><br>
+
+                                           The maximum flow problem is structured on a network.
+                                           Here the arc capacities, or upper bounds, are the only relevant parameters.
+                                           The problem is to find the maximum flow possible from some given source node
+                                           to a given sink node. All arc costs are zero.
+                                           Since the goal of the optimization is to minimize cost, the maximum flow possible
+                                           is delivered to the sink node. Applications of this problem include finding the
+                                           maximum flow of orders through a job shop, the maximum flow of water through a
+                                           storm sewer system, and the maximum flow of product through a product distribution
+                                           system, among others.</p>
+
+                                        <h3>Network Structure </h3>
+
+                                        <ul>
+                                        <li>
+                                          A network is a directed graph with <i> n </i> nodes and <i> m </i> arcs.
+                                        </li><li>
+                                          Nodes are identified by integers 1...<i>n</i>.
+
+                                        </li><li>
+                                          Graphs do not have to be symmetric: if an arc <i>(v,w)</i> is in the graph,
+                                          the reverse arc <i>(w,v)</i> does not have to be in the graph.
+                                        </li><li>
+                                          Parallel arcs are not allowed.
+                                        </li><li>
+                                          Self-loops are not allowed.
+                                        </li><li>
+                                          Arc capacities are 32-bit signed integers.
+
+                                        </li><li>
+                                          The source and the sink are distinct.
+                                        </li><li>
+                                          The sink may be unreachable from the source.
+                                        </li></ul>
+
+                                        <p>The following information makes up a DIMACS maximum flow input file:</p>
+
+<ul>
+  <li>comment lines </li>
+  <li>problem line </li>
+  <li>node descriptors </li>
+  <li>arc descriptors </li>
+</ul>
+
+<p>As noted above, information is collected into <i>lines</i>, which begin with
+one-character designators. We describe each type of information line in turn.</p>
+
+<ol>
+  <li><b>Comment Lines</b>: Comment lines give human-readable information about the file and
+    are ignored by programs. Comment lines can appear anywhere in the file. Each comment line
+    begins with a lower-case character <tt>c</tt>. <pre>    c This is an example of a comment line.</pre>
+  </li>
+  <li><b>Problem Line</b>: There is one problem line per input file. The problem line must
+    appear before any node or arc descriptor lines. For maximum flow network instances
+    the problem line has the following format: <pre>    p max NODES ARCS</pre>
+
+    <p>The lower-case character <tt>p</tt> signifies that this is a problem line. The
+    three-character problem designator <tt>max</tt> identifies the file as containing
+    specification information for a maximum flow problem. The <tt>NODES</tt> field
+    contains an integer value specifying <i>n</i>, the number of nodes in the network. The <tt>ARCS</tt>
+    field contains an integer value specifying <i>m</i>, the number of arcs in the network. </p>
+  </li>
+
+  <li><b>Node Descriptors</b>: All node descriptor lines must appear before all arc descriptor
+    lines. Node descriptors are of the form:
+                                            <pre>    n ID WHICH</pre>
+
+                                            <p>where ID is the node id and WHICH is <b>s</b> for the source and
+                                            <b>t</b> for the sink.
+                                            Two node descriptors, one for the source
+                                            and one for the sink, must appear between the problem line and the arc
+                                            descriptor lines.</p>
+  </li>
+
+  <li><b>Arc Descriptors</b>: There is one arc descriptor line for each arc in the network.
+    For a maximum flow instance, arc descriptor lines are of the following form. <pre>    a SRC DST CAP</pre>
+    <p>The lower-case character <tt>a</tt> signifies that this is an arc descriptor line. For
+    a directed arc (<i>v,w</i>) the <tt>SRC</tt> field gives the identification number for the
+    source vertex <i>v</i>, and the <tt>DST</tt> field gives the destination vertex <i>w</i>.
+    Identification numbers are integers between 1 and <i>n</i>. The <tt>CAP</tt>
+    field gives the arc capacity.
+    </p>
+  </li>
+
+</ol>
+
+<h4>Input File Example :</h4>
+
+<p>The example network pictured here is followed by a corresponding DIMACS
+maximum flow input file.</p>
+<p align="center">
+<img alt="Maximum Flow model graph" border="1" vspace="10" src="./DIMACS maximum flow problems_files/dimacs_maxf.gif">
+</p>
+
+<pre>c This is a simple example file to demonstrate the DIMACS
+c input file format for maximum flow problems. The solution
+c vector is [5,10,5,0,5,5,10,5] with cost at 15.
+c Problem line (nodes, links)
+p max 6 8
+c source
+n 1 s
+c sink
+n 6 t
+c Arc descriptor lines (from, to, capacity)
+a 1 2 5
+a 1 3 15
+a 2 4 5
+a 2 5 5
+a 3 4 5
+a 3 5 5
+a 4 6 15
+a 5 6 5
+c
+c End of file
+</pre>
+                                        <p>lp_solve can read/write and solve these models via the xli_DIMACS XLI driver (see <a href="http://lpsolve.sourceforge.net/5.5/XLI.htm">External Language Interfaces</a>).
+                                           It reads such a model in above format and solves it via linear programming.
+                                           The xli can also generate a DIMACS formatted file.<br><br>
+					   For example:</p>
+
+<pre>lp_solve -rxli xli_DIMACS maxflow.net
+</pre>
+                                        <p>This gives as result:</p>
+<pre>Value of objective function: 45
+
+Actual values of the variables:
+C1                              5
+C2                             10
+C3                              5
+C4                              0
+C5                              5
+C6                              5
+C7                             10
+C8                              5
+</pre>
+                                        <p>Also from within the IDE, this XLI can be used. However, some entries
+                                           must be added in LpSolveIDE.ini (in the folder where the IDE is installed).
+                                        </p>
+                                        <p>In the [XLI] section the following must be added:</p>
+<pre>lib6=xli_DIMACS
+</pre>
+                                        <p>And a new section for the DIMACS XLI must also be added:</p>
+<pre>[xli_DIMACS]
+extension=.net
+language=DIMACS
+</pre>
+                                        <p>Then make sure that the xli_DIMACS.dll is available for the IDE.
+                                           This must be done by placing this dll in the IDE folder or in the
+                                           Windows system32 folder.</p>
+
+<h4>Solution :</h4>
+
+                                        <p>The solution vector of above example is [5, 10, 5, 0, 5, 5, 10, 5]<br>
+                                           This must be interpreted as follows:<br>
+                                           There are as many variables as there are arc descriptor lines in the input file and
+                                           they appear in the same order. So:<br><br>
+                                           C1 specifies how much flow there is for the first arc definition, in this case from A -&gt; B<br>
+                                           C2 specifies how much flow there is for the second arc definition, in this case from A -&gt; C<br>
+                                           ...<br>
+                                           <br>
+                                           This means there is a flow of 5 from node A to B, a flow of 10 from node A to C, ...<br>
+                                           The value of the objective of lp_solve doesn't give you much information.
+                                           It is the sum of all variables used.</p>
+
+<h4>Output :</h4>
+
+                                        <p>The solution of the model can also be written in a DIMACS format:</p>
+
+
+<ul>
+  <li>comment lines </li>
+  <li>solution lines </li>
+  <li>flow assignments </li>
+</ul>
+
+<p>For each network problem, the solution is an <i>integer-valued</i> flow assignment. The
+output file should list the solution and flow assignment for all arcs in the graph. As
+noted above, information is collected into <i>lines</i>, which begin with one-character
+designators. We describe each type of information line in turn.
+
+</p><ol>
+  <li><b>Comment Lines</b>: Comment lines give human-readable information about the file and
+    are ignored by programs. Comment lines can appear anywhere in the file. Each comment line
+    begins with a lower-case character <tt>c</tt>. <pre>    c This is an example of a comment line.</pre>
+  </li>
+  <li>
+    <b> Solution line. </b>
+
+    The solution line contains the flow value and has the following format:
+    <pre>    s VALUE</pre>
+
+    <p>The lower-case character <tt>s</tt> signifies that this is a solution line.
+    The <tt>VALUE</tt> field
+    contains the value of the objective. </p>
+
+  </li><li>
+    <b> Flow assignments. </b>
+    There is one flow assignment line for each arc in the input network.
+    These lines have the following format:
+
+    <pre>    f SRC DST FLOW</pre>
+
+    The lower-case character f signifies that this is a flow assignment line. For arc (u,v), the SRC and DST fields give v and w, respectively. The FLOW field gives the amount of flow assigned to arc (u,v).
+</li></ol>
+
+                                        <p>lp_solve can generate a solution file via the xli_DIMACS XLI driver (see <a href="http://lpsolve.sourceforge.net/5.5/XLI.htm">External Language Interfaces</a>).<br><br>
+					   For example:</p>
+
+<pre>lp_solve -rxli xli_DIMACS maxflow.net -wxlisol xli_DIMACS maxflow.sol
+</pre>
+                                        <p>This generates the following solution contents:</p>
+<pre>c maxflow.net
+c
+c Dimacs-format maximum flow result file
+c generated by lp_solve
+c
+c Solution
+s 15
+c
+c SRC DST FLOW
+f 1 2 5
+f 1 3 10
+f 2 4 5
+f 2 5 0
+f 3 4 5
+f 3 5 5
+f 4 6 10
+f 5 6 5
+c
+c End of file
+</pre>
+
+                                        <p>lp_solve can also generate a solution file with only non-zero values.<br><br>
+					   For example:</p>
+
+<pre>lp_solve -rxli xli_DIMACS maxflow.net -wxlisol xli_DIMACS maxflow.sol -wxlisolopt "-nz"
+</pre>
+                                        <p>This generates the following solution contents:</p>
+<pre>c maxflow.net
+c
+c Dimacs-format maximum flow result file
+c generated by lp_solve
+c
+c Solution
+s 15
+c
+c Only non-zero flows are written
+c SRC DST FLOW
+f 1 2 5
+f 1 3 10
+f 2 4 5
+f 3 4 5
+f 3 5 5
+f 4 6 10
+f 5 6 5
+c
+c End of file
+</pre>
+
+
+                                        <p>A testset of models can be found at the dimacs ftp site: <a href="ftp://dimacs.rutgers.edu/pub/netflow">ftp://dimacs.rutgers.edu/pub/netflow</a>
+                                        </p>
+
+                                        <p>
+                                                <b>See Also</b> <a href="http://lpsolve.sourceforge.net/5.5/DIMACS_mcf.htm">DIMACS minimum cost flow problems</a>,
+                                                                <a href="http://lpsolve.sourceforge.net/5.5/DIMACS_asn.htm">DIMACS assignment problems</a>
+                                        </p>
+				</td>
+			</tr>
+		</tbody></table>
+	
+
+<span style="border-radius: 2px !important; text-indent: 20px !important; width: auto !important; padding: 0px 4px 0px 0px !important; text-align: center !important; font-style: normal !important; font-variant: normal !important; font-weight: bold !important; font-stretch: normal !important; font-size: 11px !important; line-height: 20px !important; font-family: &quot;Helvetica Neue&quot;, Helvetica, sans-serif !important; color: rgb(255, 255, 255) !important; background: url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzBweCIgd2lkdGg9IjMwcHgiIHZpZXdCb3g9Ii0xIC0xIDMxIDMxIj48Zz48cGF0aCBkPSJNMjkuNDQ5LDE0LjY2MiBDMjkuNDQ5LDIyLjcyMiAyMi44NjgsMjkuMjU2IDE0Ljc1LDI5LjI1NiBDNi42MzIsMjkuMjU2IDAuMDUxLDIyLjcyMiAwLjA1MSwxNC42NjIgQzAuMDUxLDYuNjAxIDYuNjMyLDAuMDY3IDE0Ljc1LDAuMDY3IEMyMi44NjgsMC4wNjcgMjkuNDQ5LDYuNjAxIDI5LjQ0OSwxNC42NjIiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+PHBhdGggZD0iTTE0LjczMywxLjY4NiBDNy41MTYsMS42ODYgMS42NjUsNy40OTUgMS42NjUsMTQuNjYyIEMxLjY2NSwyMC4xNTkgNS4xMDksMjQuODU0IDkuOTcsMjYuNzQ0IEM5Ljg1NiwyNS43MTggOS43NTMsMjQuMTQzIDEwLjAxNiwyMy4wMjIgQzEwLjI1MywyMi4wMSAxMS41NDgsMTYuNTcyIDExLjU0OCwxNi41NzIgQzExLjU0OCwxNi41NzIgMTEuMTU3LDE1Ljc5NSAxMS4xNTcsMTQuNjQ2IEMxMS4xNTcsMTIuODQyIDEyLjIxMSwxMS40OTUgMTMuNTIyLDExLjQ5NSBDMTQuNjM3LDExLjQ5NSAxNS4xNzUsMTIuMzI2IDE1LjE3NSwxMy4zMjMgQzE1LjE3NSwxNC40MzYgMTQuNDYyLDE2LjEgMTQuMDkzLDE3LjY0MyBDMTMuNzg1LDE4LjkzNSAxNC43NDUsMTkuOTg4IDE2LjAyOCwxOS45ODggQzE4LjM1MSwxOS45ODggMjAuMTM2LDE3LjU1NiAyMC4xMzYsMTQuMDQ2IEMyMC4xMzYsMTAuOTM5IDE3Ljg4OCw4Ljc2NyAxNC42NzgsOC43NjcgQzEwLjk1OSw4Ljc2NyA4Ljc3NywxMS41MzYgOC43NzcsMTQuMzk4IEM4Ljc3NywxNS41MTMgOS4yMSwxNi43MDkgOS43NDksMTcuMzU5IEM5Ljg1NiwxNy40ODggOS44NzIsMTcuNiA5Ljg0LDE3LjczMSBDOS43NDEsMTguMTQxIDkuNTIsMTkuMDIzIDkuNDc3LDE5LjIwMyBDOS40MiwxOS40NCA5LjI4OCwxOS40OTEgOS4wNCwxOS4zNzYgQzcuNDA4LDE4LjYyMiA2LjM4NywxNi4yNTIgNi4zODcsMTQuMzQ5IEM2LjM4NywxMC4yNTYgOS4zODMsNi40OTcgMTUuMDIyLDYuNDk3IEMxOS41NTUsNi40OTcgMjMuMDc4LDkuNzA1IDIzLjA3OCwxMy45OTEgQzIzLjA3OCwxOC40NjMgMjAuMjM5LDIyLjA2MiAxNi4yOTcsMjIuMDYyIEMxNC45NzMsMjIuMDYyIDEzLjcyOCwyMS4zNzkgMTMuMzAyLDIwLjU3MiBDMTMuMzAyLDIwLjU3MiAxMi42NDcsMjMuMDUgMTIuNDg4LDIzLjY1NyBDMTIuMTkzLDI0Ljc4NCAxMS4zOTYsMjYuMTk2IDEwLjg2MywyNy4wNTggQzEyLjA4NiwyNy40MzQgMTMuMzg2LDI3LjYzNyAxNC43MzMsMjcuNjM3IEMyMS45NSwyNy42MzcgMjcuODAxLDIxLjgyOCAyNy44MDEsMTQuNjYyIEMyNy44MDEsNy40OTUgMjEuOTUsMS42ODYgMTQuNzMzLDEuNjg2IiBmaWxsPSIjYmQwODFjIj48L3BhdGg+PC9nPjwvc3ZnPg==&quot;) 3px 50% / 14px 14px no-repeat rgb(189, 8, 28) !important; position: absolute !important; opacity: 1 !important; display: none; cursor: pointer !important; border: none !important; -webkit-font-smoothing: antialiased !important;">Save</span></body></html>

@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>assignment5-solution</title>
+
+
+<style type="text/css">
+body {
+  font-family: serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777;
+}
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+
+/* Custom Area */
+h1, h1 + p {
+  text-align: center;
+}
+
+h3 {
+  padding-left: 15px;
+  border-left: 5px solid #eee;
+  border-radius: 5px;
+}
+
+blockquote {
+  border: 1px solid #555;
+  border-radius: 3px;
+  padding: 10px 20px;
+  margin: 30px;
+  color: #000;
+}
+
+n{
+  height: 30px;
+  line-height: 20px;
+  float: right;
+  color: #555;
+  font-weight: normal;
+  font-size: 48px;
+}
+
+/* p {
+  text-indent: 2em;
+} */
+
+pre,code{
+  page-break-inside: auto !important;
+}
+
+pre{
+  background: #fff !important;
+  border: 0 !important;
+}
+
+code[class*="language-none"] > .line-numbers-rows > span:first-child {
+    counter-increment: initial;
+}
+code[class*="language-none"] > .line-numbers-rows > span:first-child:before {
+    content: "-";
+}
+</style>
+
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+<style type="text/css">
+pre.line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre.line-numbers > code {
+	position: relative;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		pointer-events: none;
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+</style>
+
+<style type="text/css">
+div.prism-show-language {
+	position: relative;
+}
+
+div.prism-show-language > div.prism-show-language-label {
+	color: black;
+	background-color: #CFCFCF;
+	display: inline-block;
+	position: absolute;
+	bottom: auto;
+	left: auto;
+	top: 0;
+	right: 0;
+	width: auto;
+	height: auto;
+	font-size: 0.9em;
+	border-radius: 0 0 0 5px;
+	padding: 0 0.5em;
+	text-shadow: none;
+	z-index: 1;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	-webkit-transform: none;
+	-moz-transform: none;
+	-ms-transform: none;
+	-o-transform: none;
+	transform: none;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">算法设计与分析第四次作业 - 网络流及其应用</h1>
+
+<p>201628013229058 洪鑫</p>
+
+<h2 id="toc_1">1 Load balance <n>1</n></h2>
+
+<h3 id="toc_2">问题描述</h3>
+
+<blockquote>
+<p>You have some different computers and jobs. For each job, it can only be done on one of two specified computers. The load of a computer is the number of jobs which have been done on the computer. Give the number of jobs and two computer ID for each job. You task is to minimize the max load.<br />
+(hint: binary search)</p>
+</blockquote>
+
+<h3 id="toc_3">算法描述</h3>
+
+<p>可以构造一个网络来解决这个问题。</p>
+
+<p>构建一个四层有向图：第一层只有一个起点，第二层的每个节点表示一个任务，第三层的每个节点表示一台计算机，第四层为一个汇点。所有边都是从上一层指向下一层，具体连接情况如下：</p>
+
+<p>起点与第二层的每个节点都有一条边相连，并且这条边的权重为1，限制一个任务只能完成一次。第二层每个任务节点与其相对应的第三层的计算机节点相连，边的权重也为1。第三层所有节点都和汇点相连。</p>
+
+<p>我们的任务是找到第三层到汇点所有边可满足的最小权值，使得所有的任务都可以被执行，也即网络的最大流为任务数。通过在0~n之间使用二分查找的办法，可以找到可满足的最小权值。</p>
+
+<h3 id="toc_4">伪代码</h3>
+
+<p>n为任务数，list有n行，每行有两个元素，分别表示第i个任务可执行的两个计算机编号。max_flow为求得的最大流量。</p>
+
+<div><pre class="line-numbers"><code class="language-none">LoadBalance(n, list):
+V={s,t}
+E={}
+G = &lt;V,E&gt;
+for i = 1 to n
+    c0 = list[i][0]
+    c1 = list[i][1]
+    V = V U {v2i, v3c0, v3c1}
+    E = E U {(s,v2i,1),(v2i,v3c0,1),(v2i,v3c1,1),(v3c0,t,k),(v3c1,t,k)}
+end
+x = 0
+y = n
+while True:
+    k = (x+y)/2
+    max_flow = Ford-Fulkerson(G, s, t)
+    if max_flow == n
+        y = k
+    else if y == x+1
+        return y
+    else
+        x = k
+end</code></pre></div>
+
+<h3 id="toc_5">正确性证明</h3>
+
+<p>分两部分证明：</p>
+
+<p>1.算法构造的网络满足问题对任务和计算机的约束。<br />
+当第三层节点（计算机）到汇点边的权值足够大时，该网络的最大流一定满足：第二层每个节点（任务）的入流量和出流量都为1。也即满足：所有任务都被可选的两台计算机中的一台执行了。</p>
+
+<p>2.二分查找后得到的返回值是最小权值：
+首先，该网络的最大流满足：第三层所有节点的入流量等于出流量，而根据第二层节点（任务）出流量的含义，可以得出第三层节点（计算机）出流量即为该计算机执行的任务总数。<br />
+其次，第三层节点到汇点边的权值统一赋值\(k\)，\(k\)即为选定的所有计算机最大负载量，因为该网络的最大流一定满足：第三层节点到汇点的流量小于\(k\)。
+最后，折半查找得到的返回值\(y\)一定是最小的计算机最大负载量。因为如果不是，那么存在一个最大负载量\(y&#39;&lt;y\)使得<code>max_flow = Ford-Fulkerson(G, s, t)</code>。但是，算法返回的\(y\)满足:当\(k=y-1\)，<code>max_flow</code> 不等于 <code>Ford-Fulkerson(G, s, t)</code>，相互矛盾，所以返回的是最小的计算机最大负载量。</p>
+
+<h3 id="toc_6">算法复杂度</h3>
+
+<p>算法的复杂度为\(O(n^2log_2n)\)，其中\(n\)为任务数。</p>
+
+<p>构造网络的复杂度为\(O(n)\)。Ford-Fulkerson算法的复杂度为\(O(mC)\)，其中\(m\)为边数，\(C\)为起点的最大出流量，在该问题中，\(E \leq 5n\)，\(C \leq n\)，在本问题中运用Ford-Fulkerson算法的复杂度为\(O(n^2)\)。折半查找的复杂度为\(O(log_2n)\)，所以总查找复杂度为\(O(n^2log_2n)\)。最后的算法复杂度为\(O(n+n^2log_2n)\)，也即\(O(n^2log_2n)\)</p>
+
+<h2 id="toc_7">2 Matrix <n>2</n></h2>
+
+<h3 id="toc_8">问题描述</h3>
+
+<blockquote>
+<p>For a matrix filled with 0 and 1, you know the sum of every row and column. You are asked to give such a matrix which satisfys the conditions.</p>
+</blockquote>
+
+<h2 id="toc_9">算法描述</h2>
+
+<p>可以构造一个网络来解决这个问题。</p>
+
+<p>构建一个五层有向图，第一层为一个起点，第二层节点数等于矩阵的行数，第三层节点数等于矩阵的元素数，第四层节点数等于矩阵的列数，第五层为一个汇点。</p>
+
+<p>起点和所有的第二层节点分别相连，边的权值为对应的行和。第二层节点的每个节点和其对应的第三层节点相连（行元素），比如第二层第一个节点和第三层中所有对应矩阵第一行元素的节点相连，权值都为1。同样的第三层某一列的所有元素和对应的第四层中的列节点相连，边的权值为1。第四层所有节点和汇点相连，边的权值为列节点所对应矩阵列的列和。</p>
+
+<p>求该网络的最大流，通过最大流中第二层到第三层节点边的值或第三层到第四层节点边的值即可得到一个解，应为节点的入流量等于出流量，两种方式均可。值为1的表示该节点对应的矩阵元素为1。</p>
+
+<h2 id="toc_10">伪代码</h2>
+
+<p>b[i]为矩阵A第i行的行和，c[j]为矩阵A第j列的列和。max_flow为求得的最大流，max_flow(e)表示边e的流量。</p>
+
+<div><pre class="line-numbers"><code class="language-none">Matrix(b,c):
+V={s,t}
+E={}
+G = &lt;V,E&gt;
+m = |b|
+c = |c|
+for i = 1 to m
+    V = V U {bi}
+    E = E U {(s,bi,b[i])}
+end 
+for j = 1 to n
+    V = V U {cj}
+    E = E U {(cj,t,c[j])}
+end
+for i = 1 to m
+    for j = 1 to m
+        V = V U {aij}
+        E = E U {(bi,aij,1),(aij,cj,1)}
+    end
+end 
+max_flow=Push-Relabel(G)
+for i = 1 to m
+    for j = 1 to m
+        Aij = max_flow((ci,aij))
+    end
+end 
+return A</code></pre></div>
+
+<h3 id="toc_11">正确性证明</h3>
+
+<p>分为两部分证明：</p>
+
+<p>1.满足矩阵元素为0，1的约束<br />
+通过约束第二层到第三层边和第三层到第四层边的权值为1，使得第三层所有的节点在最大流中，入流量等于出流量，可取的值为0和1。而该值即为对应矩阵元素的值，满足了问题的0，1约束。</p>
+
+<p>2.返回的结果满足行和，列和的约束<br />
+首先，行和的总和等于列和的总和。其次对于第二层的节点（行和）而言，最大总流出量大于等于最大总流出量，同样对于第四层节点（列和）而言最大总流入量大于等于最大总流出量。所以最大流必然满足：起点到第二层所有边以及第四层到汇点所有边都被占满。结合1可以得出返回的矩阵满足了行和、列和约束。</p>
+
+<p>综上所述，算法得出的矩阵满足问题要求，算法正确。</p>
+
+<h3 id="toc_12">算法复杂度</h3>
+
+<p>算法的时间复杂度为\(O((mn)^3)\)，其中m为矩阵的行数，n为矩阵的列数。构造网络的时间复杂度为\(O(mn)\)。Push-Relabel算法的复杂度为\(O(V^2E)\)，其中\(V\)为顶点数，\(E\)为边数。在该问题中，\(V=mn+m+n+2,E=m+n+2mn\)，用Push-Relabel算法求构造网络最大流的时间复杂度为\(O((mn)^3)\)。总时间复杂度为\(O(mn+(mn)^3)\)，也即\(O((mn)^3)\)</p>
+
+<h2 id="toc_13">3 Unique Cut <n>3</n></h2>
+
+<h3 id="toc_14">问题描述</h3>
+
+<blockquote>
+<p>Let \(G=(V,E)\) be a directed graph,with source \(s\in V\), sink \(t\in V\) ,and non-negative edge capacities \(c_e\). Give a polynomial-time algorithm to decide whether \(G\) has a unique minimum \(st\) cut.</p>
+</blockquote>
+
+<h3 id="toc_15">算法描述</h3>
+
+<p>可以使用Ford-Fulkerson算法得到有向图的一个最小割。</p>
+
+<p>首先找到有向图的一个最小割。然后分别将最小割所对应边的集合中的每一条边的容量加1，然后计算新网络的最小割，如果存在一个新的网络所求得的最小割与最先得到的最小割总容量相等，那么该有向图的最小割不是唯一的，否则该有向图的最小割是唯一的。</p>
+
+<h3 id="toc_16">伪代码</h3>
+
+<p>C表示最小割对应的边的集合，c(C)表示最小割的大小。</p>
+
+<div><pre class="line-numbers"><code class="language-none">UniqueCut(G):
+C = MinCut(G)
+for e in C:
+    ce += 1
+    C&#39; = Ford-Fulkerson(G)
+    if c(C) == c(C&#39;)
+        return false
+    end
+    ce -= 1
+end 
+return true</code></pre></div>
+
+<h3 id="toc_17">正确性证明</h3>
+
+<p>分为两部分证明：</p>
+
+<p>1.如果新图的最小割大小和原始图大小相等，最小割不是唯一的<br />
+因为\(c(C)=c(C&#39;)\)，而因增加了原始图中最小割边集合中一条边的权值，所以新的最小割边集合必然和原来最小割集合不一致，也因此显然原始图中存在多个最小割。</p>
+
+<p>2.如果所有新图的最小割大小和原始图最小割大小都不想等，最小割是唯一的<br />
+假设在这种情况下，存在另一个不同的最小割\(C&#39;\)，有\(c(C)=c(C&#39;)\)。那么必然存在一条边\(e \in C\)并且\(e \notin C&#39;\)，增加\(e\)的大小不会改变最小割的大小，这与2的条件相违背，所以在该条件下最小割是唯一的。</p>
+
+<h3 id="toc_18">算法复杂度</h3>
+
+<p>算法的复杂度为\(O(m^2C)\)，其中m为有向图边的总数，C为起点的最大流出量。Ford-Fulkerson算法的复杂度为\(O(mC)\)。最小割边集合中最少有一条边，最多有\(m-1\)条边，所以循环中最多执行\(m-1\)次Ford-Fulkerson算法，总共执行\(m\)次Ford-Fulkerson算法。</p>
+
+<h2 id="toc_19">4 Problem Reduction <n>4</n></h2>
+
+<h3 id="toc_20">问题描述</h3>
+
+<blockquote>
+<p>There is a matrix with numbers which means the cost when you walk through this point. you are asked to walk through the matrix from the top left point to the right bottom point and then return to the top left point with the minimal cost. Note that when you walk from the top to the bottom you can just walk to the right or bottom point and when you return, you can just walk to the top or left point. And each point CAN NOT be walked through more than once.</p>
+</blockquote>
+
+<h3 id="toc_21">算法描述</h3>
+
+<p>通过构造网络，利用最小费用流求解。</p>
+
+<p>对于矩阵中每个元素用两个节点\(b_{ij}\)，\(c_{ij}\)表示，\(b_{ij}\)向\(c_{ij}\)有一条边，费用为对应元素在矩阵中的值。除了\(b_{ij}\),\(c_{ij}\)之间的边之外，所有连接\(b_{ij}\)的边都指向\(b_{ij}\)，所有连接\(c_{ij}\)的边都从\(c_{ij}\)出发。按照矩阵中的位置连接相邻的节点，比如\(c_{ij}\)连接\(b_{i(j+1)}\)和\(b_{(i+1)j}\)，右侧和底部的节点情况特殊，只有一个可行方向。除了\((b_{00},c_{00})\)和\((b_{(m-1)(n-1)},c_{(m-1)(n-1)})\)之外所有边的最大流量为1。</p>
+
+<p>通过求解流量为2的最小费用流可以得到问题的解。</p>
+
+<h3 id="toc_22">伪代码</h3>
+
+<p>(b,c,x,y)表示从b指向a的边，流量为x，费用为y。flow((b,c))表示最小费用流中(b,c)边的流量。</p>
+
+<div><pre class="line-numbers"><code class="language-none">MatrixWalk(A):
+m,n = size(A)
+V={bij:i∈[0,m),j∈[0,n),i∈Z,j∈Z} U {cij:i∈[0,m),j∈[0,n),i∈Z,j∈Z}
+E={(bij,cij,1,Aij):i∈[0,m),j∈[0,n),i∈Z,j∈Z,i+j∉{0,m+n-2}}
+E = E U {(b00,c00,2,A00) and (b(m-1)(n-1)c(m-1)(n-1),2,A(m-1)(n-1))}
+G=&lt;V,E&gt;
+for i=0 to m-1
+    for j=0 to n-1
+        if i != m-1
+            E = E U {(cij,b(i+1)j,1,0)}
+        end
+        if j != n-1
+            E = E U {(cij,bi(j+1),1,0)}
+        end
+    end
+end
+flow=Klein(G)
+for i=0 to m-1
+    for j=0 to n-1
+        Sij = flow((bij,cij))
+    end
+end
+return S    </code></pre></div>
+
+<h3 id="toc_23">正确性证明</h3>
+
+<p>通过以下几点证明：</p>
+
+<p>1.满足所有节点只经过一次。<br />
+构造的网络中，边\((b_{ij},c_{ij})\)可以代表矩阵中的一个元素，因为除了左上角和右下角元素的最大流量为2之外，其余所有元素的最大流量为1，保证了该元素只经过一次。</p>
+
+<p>2.满足一去一回和方向性要求
+通过寻找流量为2的费用流，因为除了起始和结束的一条边之外，所有边的流量为1，将会导致有两条线路从\(c_{00}\)到达\(b_{(m-1)(n-1)}\)。因为所有的\(c_{ij}\)连接\(b_{i(j+1)}\)和\(b_{(i+1)j}\)，保证了方向性。两条线路中具体哪条线路去，哪条线路回均可，不影响结果。</p>
+
+<p>3.费用最小
+在满足1，2的基础上，求解最小费用流问题，得到的网络流显然费用最小，也即对应的行走方式付出的费用最低。</p>
+
+<p>综上所述，算法正确。</p>
+
+<h3 id="toc_24">算法复杂度</h3>
+
+<p>时间复杂度为\(O(mn)\)，其中\(m\)是行数，\(n\)是列数。构造网络的复杂度为\(O(mn)\)。可以使用Ford-Fulkerson算法结合Klein算法求解最小费用流问题，Ford-Fulkerson算法的时间复杂度为\(O(VC)\)，在本题中，\(V=3mn-m-n,C=2\)，复杂度为\(O(mn)\)。</p>
+
+<h2 id="toc_25">5 Ford-Fulkerson algorithm <n>8</n></h2>
+
+<h3 id="toc_26">问题描述</h3>
+
+<blockquote>
+<p>Implement Ford-Fulkerson algorithm to find the maximum flow of the fol- lowing network, and list your intermediate steps. Use you implementation to solve problem 1 and show your answers.</p>
+
+<p>INPUT: (N, M) means number of jobs and computers. Next N line, each line has two computer ID for a job. see more detial in the file problem1.data. </p>
+
+<p>OUTPUT: the minimum number of the max load.</p>
+</blockquote>
+
+<h3 id="toc_27">Ford-Fulkerson 算法实现 （\(Python\)）</h3>
+
+<div><pre class="line-numbers"><code class="language-python">#!/usr/bin/python3
+# Ford-Fulkerson Algorithm
+# Author: HongXin
+# 2016.12.13
+
+import networkx as nx
+
+
+class FordFulkerson:
+    def __init__(self, graph, s, t):
+        self.__source = s
+        self.__target = t
+        if type(graph) is nx.classes.digraph.DiGraph:
+            self.__graph = graph
+        else:
+            self.__graph = nx.DiGraph()
+            self.__graph.add_weighted_edges_from(graph)
+        self.flow = nx.DiGraph()
+        self.f = 0
+        self.__step = 0
+
+    def get_max_flow(self, mid=True):
+        # mid - True for print intermediate process of flow, False for not.
+        while True:
+            path = self.__get_a_path()
+            if path is None:
+                break
+            bottleneck = self.__bottleneck(path)
+            self.__construct_residual_graph(path, bottleneck)
+            self.__update_flow(path, bottleneck)
+            if mid:
+                self.__print_flow()
+        return self.f
+
+    def __get_a_path(self):
+        # Return a random path from source to target, None for no available path.
+        # also can use dijkstra algorithm here to get a shortest path
+        # the method which I used here really get a random path from source to target
+        paths = list(nx.all_simple_paths(self.__graph, self.__source, self.__target))
+        return None if len(paths) == 0 else paths[0]
+
+    def __bottleneck(self, path_nodes):
+        # Find the minimum edge of given path
+        return min(map(lambda i: self.__graph.get_edge_data(path_nodes[i], path_nodes[i + 1])[&#39;weight&#39;],
+                       range(len(path_nodes) - 1)))
+
+    def __construct_residual_graph(self, path_nodes, bottleneck):
+        # Construct residual graph.
+        # Update(decrease) capacity first and update(increase or add new) backward edges.
+        for i in range(len(path_nodes) - 1):
+            start, end = path_nodes[i], path_nodes[i + 1]
+            self.__graph[start][end][&#39;weight&#39;] -= bottleneck
+            if self.__graph[start][end][&#39;weight&#39;] == 0:
+                self.__graph.remove_edge(start, end)
+            if self.__graph.has_edge(end, start):
+                self.__graph[end][start][&#39;weight&#39;] += bottleneck
+            else:
+                self.__graph.add_edge(end, start, weight=bottleneck)
+
+    def __update_flow(self, path_nodes, bottleneck):
+        self.f += bottleneck
+        # Update flow.
+        for i in range(len(path_nodes) - 1):
+            start, end = path_nodes[i], path_nodes[i + 1]
+            if self.flow.has_edge(start, end):
+                self.flow[start][end][&#39;weight&#39;] += bottleneck
+            elif self.flow.has_edge(end, start):
+                remain = self.flow[end][start][&#39;weight&#39;] - bottleneck
+                if remain &gt; 0:
+                    self.flow[end][start][&#39;weight&#39;] = remain
+                else:
+                    self.flow.remove_edge(end, start)
+                    if remain &lt; 0:
+                        self.flow.add_edge(start, end, weight=-remain)
+            else:
+                self.flow.add_edge(start, end, weight=bottleneck)
+
+    def __print_flow(self):
+        # Example: Step 0 : 1 -&gt; [(&#39;s&#39;, &#39;u&#39;, {&#39;weight&#39;: 1}), (&#39;u&#39;, &#39;v&#39;, {&#39;weight&#39;: 1}), (&#39;v&#39;, &#39;t&#39;, {&#39;weight&#39;: 1})]
+        if self.__step == 0:
+            print(&#39;Intermediate Process: (max flow &amp; detail):&#39;)
+        print(&#39;Step&#39;, self.__step, &#39;:&#39;, self.f, &#39;-&gt;&#39;, self.flow.edges(data=True))
+        self.__step += 1
+
+
+if __name__ == &#39;__main__&#39;:
+    edge_list = [(&#39;s&#39;, &#39;u&#39;, 1), (&#39;s&#39;, &#39;v&#39;, 1), (&#39;u&#39;, &#39;v&#39;, 1), (&#39;u&#39;, &#39;t&#39;, 1), (&#39;v&#39;, &#39;t&#39;, 1)]
+    ford = FordFulkerson(edge_list, &#39;s&#39;, &#39;t&#39;)
+    print(&#39;Max Flow:&#39;, ford.get_max_flow())
+       </code></pre></div>
+
+<h3 id="toc_28">Min load 算法实现</h3>
+
+<div><pre class="line-numbers"><code class="language-python">def file2problems(path):
+    f = open(path, &#39;r&#39;)
+    problems, job_count, job = [], 0, 0
+    for line in f:
+        line = line.strip()
+        if not(line.startswith(&#39;#&#39;) or line == &#39;&#39;):
+            if job &gt; job_count or job == 0:
+                if job != 0:
+                    problems.append(graph)
+                job_count = int(line.split(&#39; &#39;)[0])
+                job = 1
+                graph = nx.DiGraph()
+            else:
+                computers = line.split(&#39; &#39;)
+                graph.add_edge(&#39;s&#39;, &#39;j&#39;+str(job), weight=1)
+                graph.add_edge(&#39;j&#39;+str(job), &#39;c&#39;+computers[0], weight=1)
+                graph.add_edge(&#39;j&#39;+str(job), &#39;c&#39;+computers[1], weight=1)
+                graph.add_edge(&#39;c&#39;+computers[0], &#39;t&#39;, weight=job_count)
+                graph.add_edge(&#39;c&#39;+computers[1], &#39;t&#39;, weight=job_count)
+                job += 1
+    problems.append(graph)
+    return problems
+
+
+def min_load(graph):
+    job_count = len(graph.edges(&#39;s&#39;))
+    x, y = 0, job_count
+    while True:
+        load = (x+y)//2
+        for edge in graph.in_edges(&#39;t&#39;, data=True):
+            edge[2][&#39;weight&#39;] = load
+        ford = FordFulkerson(graph.copy(), &#39;s&#39;, &#39;t&#39;)
+        max_flow = ford.get_max_flow(False)
+        if max_flow == job_count:
+            y = load
+        elif y == x + 1:
+            return y
+        else:
+            x = load
+
+if __name__ == &#39;__main__&#39;:
+    _list = file2problems(&#39;problem1.data&#39;)
+    for problem in _list:
+        print(&#39;Min Load: &#39;, min_load(problem))</code></pre></div>
+
+<h3 id="toc_29">运行结果</h3>
+
+<div><pre class="line-numbers"><code class="language-1">Min Load:  2
+Min Load:  1
+Min Load:  2
+Min Load:  3
+Min Load:  1
+Min Load:  1
+Min Load:  3
+Min Load:  1
+Min Load:  1
+Min Load:  1</code></pre></div>
+
+<h3 id="toc_30">中间过程示例（问题一）</h3>
+
+<div><pre class="line-numbers"><code class="language-1">Intermediate Process: (max flow &amp; detail):
+Step 0 : 1 -&gt; [(&#39;j3&#39;, &#39;c2&#39;, {&#39;weight&#39;: 1}), (&#39;c2&#39;, &#39;t&#39;, {&#39;weight&#39;: 1}), (&#39;s&#39;, &#39;j3&#39;, {&#39;weight&#39;: 1})]
+Step 1 : 2 -&gt; [(&#39;j3&#39;, &#39;c2&#39;, {&#39;weight&#39;: 1}), (&#39;c2&#39;, &#39;t&#39;, {&#39;weight&#39;: 2}), (&#39;j2&#39;, &#39;c2&#39;, {&#39;weight&#39;: 1}), (&#39;s&#39;, &#39;j3&#39;, {&#39;weight&#39;: 1}), (&#39;s&#39;, &#39;j2&#39;, {&#39;weight&#39;: 1})]
+Step 2 : 3 -&gt; [(&#39;j3&#39;, &#39;c1&#39;, {&#39;weight&#39;: 1}), (&#39;c1&#39;, &#39;t&#39;, {&#39;weight&#39;: 1}), (&#39;c2&#39;, &#39;t&#39;, {&#39;weight&#39;: 2}), (&#39;j2&#39;, &#39;c2&#39;, {&#39;weight&#39;: 1}), (&#39;s&#39;, &#39;j3&#39;, {&#39;weight&#39;: 1}), (&#39;s&#39;, &#39;j2&#39;, {&#39;weight&#39;: 1}), (&#39;s&#39;, &#39;j4&#39;, {&#39;weight&#39;: 1}), (&#39;j4&#39;, &#39;c2&#39;, {&#39;weight&#39;: 1})]
+Step 3 : 4 -&gt; [(&#39;j3&#39;, &#39;c1&#39;, {&#39;weight&#39;: 1}), (&#39;c1&#39;, &#39;t&#39;, {&#39;weight&#39;: 2}), (&#39;c2&#39;, &#39;t&#39;, {&#39;weight&#39;: 2}), (&#39;j2&#39;, &#39;c1&#39;, {&#39;weight&#39;: 1}), (&#39;s&#39;, &#39;j3&#39;, {&#39;weight&#39;: 1}), (&#39;s&#39;, &#39;j2&#39;, {&#39;weight&#39;: 1}), (&#39;s&#39;, &#39;j4&#39;, {&#39;weight&#39;: 1}), (&#39;s&#39;, &#39;j1&#39;, {&#39;weight&#39;: 1}), (&#39;j1&#39;, &#39;c2&#39;, {&#39;weight&#39;: 1}), (&#39;j4&#39;, &#39;c2&#39;, {&#39;weight&#39;: 1})]
+Intermediate Process: (max flow &amp; detail):
+Step 0 : 1 -&gt; [(&#39;j3&#39;, &#39;c2&#39;, {&#39;weight&#39;: 1}), (&#39;c2&#39;, &#39;t&#39;, {&#39;weight&#39;: 1}), (&#39;s&#39;, &#39;j3&#39;, {&#39;weight&#39;: 1})]
+Step 1 : 2 -&gt; [(&#39;j3&#39;, &#39;c1&#39;, {&#39;weight&#39;: 1}), (&#39;c2&#39;, &#39;t&#39;, {&#39;weight&#39;: 1}), (&#39;j2&#39;, &#39;c2&#39;, {&#39;weight&#39;: 1}), (&#39;s&#39;, &#39;j3&#39;, {&#39;weight&#39;: 1}), (&#39;s&#39;, &#39;j2&#39;, {&#39;weight&#39;: 1}), (&#39;c1&#39;, &#39;t&#39;, {&#39;weight&#39;: 1})]
+Intermediate Process: (max flow &amp; detail):
+Step 0 : 1 -&gt; [(&#39;j3&#39;, &#39;c2&#39;, {&#39;weight&#39;: 1}), (&#39;c2&#39;, &#39;t&#39;, {&#39;weight&#39;: 1}), (&#39;s&#39;, &#39;j3&#39;, {&#39;weight&#39;: 1})]
+Step 1 : 2 -&gt; [(&#39;j3&#39;, &#39;c1&#39;, {&#39;weight&#39;: 1}), (&#39;c2&#39;, &#39;t&#39;, {&#39;weight&#39;: 1}), (&#39;j2&#39;, &#39;c2&#39;, {&#39;weight&#39;: 1}), (&#39;s&#39;, &#39;j3&#39;, {&#39;weight&#39;: 1}), (&#39;s&#39;, &#39;j2&#39;, {&#39;weight&#39;: 1}), (&#39;c1&#39;, &#39;t&#39;, {&#39;weight&#39;: 1})]
+Min Load:  2</code></pre></div>
+
+<h2 id="toc_31">6 Push-relabel <n>9</n></h2>
+
+<h3 id="toc_32">问题描述</h3>
+
+<blockquote>
+<p>Implement push-relabel algorithm to find the maximum flow of a network, and list your intermediate steps. Use your implementation to solve problem 2 and write a check problem to see if your answer is right.</p>
+
+<p>INPUT: Numbers of rows and columns. And the sum of them. See more detial in the file problem2.data.</p>
+
+<p>OUTPUT: The matrix you get. Any one satisfy the conditions will be accept.</p>
+</blockquote>
+
+<h3 id="toc_33">Push-Relabel 算法实现 （\(Python\)）</h3>
+
+<div><pre class="line-numbers"><code class="language-python">#!/usr/bin/python3
+# Push-relabel Algorithm
+# Author: HongXin
+# 2016.12.14
+
+import networkx as nx
+
+
+class PushRelabel:
+    def __init__(self, graph, s, t):
+        self.__source = s
+        self.__target = t
+        if type(graph) is nx.classes.digraph.DiGraph:
+            self.__graph = graph
+        else:
+            self.__graph = nx.DiGraph()
+            self.__graph.add_weighted_edges_from(graph)
+        self.pre_flow = nx.DiGraph()
+        self.f = 0
+        self.__step = 0
+
+    def get_max_flow(self, mid=True):
+        self.__init_node()
+        self.__init_pre_flow()
+        while True:
+            node = self.__get_non_zero_excess_node()
+            if node is None:
+                break
+            edge = self.__get_high_start_edge(node)
+            if edge is None:
+                self.__relabel(node)
+                if mid:
+                    self.__print_label()
+            else:
+                bottleneck = self.__push(edge)
+                self.__construct_residual_graph(edge, bottleneck)
+                if mid:
+                    self.__print_push()
+
+        self.f = self.__excess(self.__target)
+        return self.f
+
+    def __init_node(self):
+        # Init height. Assign source with n and others with 0.
+        for node, data in self.__graph.nodes_iter(True):
+            data[&#39;height&#39;] = 0
+        self.__graph.node[self.__source][&#39;height&#39;] = len(self.__graph.node)
+
+    def __init_pre_flow(self):
+        # Init pre_flow. Assign edges start from source with its capacity.
+        self.pre_flow.add_edges_from(self.__graph.edges(self.__source, data=True))
+        # Construct residual graph
+        for start, end, data in self.__graph.edges(self.__source, data=True):
+            self.__graph.add_edge(end, start, weight=data[&#39;weight&#39;])
+            self.__graph.add_edge(start, end, weight=0)
+
+    def __get_non_zero_excess_node(self):
+        result = None
+        for node in self.pre_flow.nodes():
+            if self.__excess(node) &gt; 0 and node != self.__source and node != self.__target:
+                # find the lowest non zero excess node
+                if result is None or self.__graph.node[node][&#39;height&#39;] &lt; self.__graph.node[result][&#39;height&#39;]:
+                    result = node
+        return result
+
+    def __excess(self, node):
+        into, out, = 0, 0
+        for edge in self.pre_flow.in_edges(node, data=True):
+            into += edge[2][&#39;weight&#39;]
+        for edge in self.pre_flow.out_edges(node, data=True):
+            out += edge[2][&#39;weight&#39;]
+        return into - out
+
+    def __get_high_start_edge(self, node):
+        for start, end, data in self.__graph.edges(node, data=True):
+            if data[&#39;weight&#39;] &gt; 0 and self.__graph.node[start][&#39;height&#39;] &gt; self.__graph.node[end][&#39;height&#39;]:
+                return start, end, data
+        return None
+
+    def __push(self, edge):
+        start, end, weight = edge[0], edge[1], edge[2][&#39;weight&#39;]
+        excess = self.__excess(start)
+        if self.pre_flow.has_edge(start, end):
+            bottleneck = min(weight, excess)
+            self.pre_flow.edge[start][end][&#39;weight&#39;] += bottleneck
+        elif self.pre_flow.has_edge(end, start):
+            bottleneck = min(self.pre_flow[end][start][&#39;weight&#39;], excess)
+            if bottleneck == self.pre_flow[end][start][&#39;weight&#39;]:
+                self.pre_flow.remove_edge(end, start)
+            else:
+                self.pre_flow.edge[end][start][&#39;weight&#39;] -= bottleneck
+        else:
+            bottleneck = min(weight, excess)
+            self.pre_flow.add_edge(start, end, weight=bottleneck)
+        return bottleneck
+
+    def __construct_residual_graph(self, edge, bottleneck):
+        start, end = edge[0], edge[1]
+        self.__graph.edge[start][end][&#39;weight&#39;] -= bottleneck
+        if self.__graph.has_edge(end, start):
+            self.__graph.edge[end][start][&#39;weight&#39;] += bottleneck
+        else:
+            self.__graph.add_edge(end, start, weight = bottleneck)
+
+    def __relabel(self, node):
+        self.__graph.node[node][&#39;height&#39;] += 1
+
+    def __print_label(self):
+        print(&#39;Step&#39;, self.__step, &#39;(Relabel):&#39;, self.__graph.node)
+        self.__step += 1
+
+    def __print_push(self):
+        print(&#39;Step&#39;, self.__step, &#39;(Push):&#39;, self.pre_flow.edge)
+        self.__step += 1
+
+if __name__ == &#39;__main__&#39;:
+    # edge_list = [(&#39;s&#39;, &#39;u&#39;, 1), (&#39;s&#39;, &#39;v&#39;, 1), (&#39;u&#39;, &#39;v&#39;, 1), (&#39;u&#39;, &#39;t&#39;, 1), (&#39;v&#39;, &#39;t&#39;, 1)]
+    edge_list = [(&#39;s&#39;,&#39;u&#39;,3),(&#39;u&#39;,&#39;v&#39;,1),(&#39;v&#39;,&#39;t&#39;,2)]
+    ford = PushRelabel(edge_list, &#39;s&#39;, &#39;t&#39;)
+    print(&#39;Max Flow:&#39;, ford.get_max_flow())</code></pre></div>
+
+<h3 id="toc_34">Get Matrix 算法实现</h3>
+
+<div><pre class="line-numbers"><code class="language-python">def file2problems(path):
+    f = open(path, &#39;r&#39;)
+    problems, line_num = [], 0
+    for line in f:
+        line = line.strip()
+        if not (line.startswith(&#39;#&#39;) or line == &#39;&#39;):
+            if line_num == 0:
+                m, n = map(int, line.split(&#39; &#39;))
+
+            if line_num &gt; 2:
+                line_num = 0
+                graph = nx.DiGraph()
+                for i in range(m):
+                    graph.add_edge(&#39;s&#39;, &#39;b&#39; + str(i), weight=b[i])
+                for j in range(n):
+                    graph.add_edge(&#39;c&#39; + str(j), &#39;t&#39;, weight=c[j])
+                for i in range(m):
+                    for j in range(n):
+                        graph.add_edge(&#39;b&#39; + str(i), &#39;a&#39; + str(i) + str(j), weight=1)
+                        graph.add_edge(&#39;a&#39; + str(i) + str(j), &#39;c&#39; + str(j), weight=1)
+                problems.append((graph, m, n))
+                m, n = map(int, line.split(&#39; &#39;))
+            elif line_num == 1:
+                b = list(map(int, line.split(&#39; &#39;)))
+            else:
+                c = list(map(int, line.split(&#39; &#39;)))
+
+            line_num += 1
+
+    problems.append(graph)
+    return problems
+
+
+def flow2matrix(flow, m, n):
+    matrix = np.zeros((m, n))
+    for i in range(m):
+        for j in range(n):
+            if flow.has_node(&#39;a&#39; + str(i) + str(j)) \
+                    and flow.has_edge(&#39;a&#39; + str(i) + str(j), &#39;c&#39; + str(j))\
+                    and flow.edge[&#39;a&#39; + str(i) + str(j)][ &#39;c&#39; + str(j)][&#39;weight&#39;] &gt; 0:
+                matrix[i][j] = 1
+    return matrix
+
+
+if __name__ == &#39;__main__&#39;:
+    _list = file2problems(&#39;problem2.data&#39;)
+    for _graph, _m, _n in _list:
+        push = PushRelabel(_graph, &#39;s&#39;, &#39;t&#39;)
+        push.get_max_flow(False)
+        print(flow2matrix(push.pre_flow, _m, _n))</code></pre></div>
+
+<h3 id="toc_35">部分结果 (第一组、第二组)</h3>
+
+<div><pre class="line-numbers"><code class="language-1">[[ 1.  0.  1.  1.  0.  0.  0.  0.  1.  1.]
+ [ 0.  1.  0.  0.  1.  0.  1.  0.  1.  1.]
+ [ 0.  0.  1.  1.  1.  1.  1.  0.  1.  1.]
+ [ 0.  0.  1.  0.  1.  1.  1.  0.  1.  1.]
+ [ 0.  0.  1.  1.  0.  1.  1.  0.  1.  1.]
+ [ 0.  0.  1.  0.  0.  0.  1.  0.  0.  1.]
+ [ 1.  0.  1.  0.  0.  0.  1.  0.  1.  1.]
+ [ 0.  0.  1.  1.  1.  1.  1.  1.  1.  0.]
+ [ 0.  0.  1.  0.  1.  1.  1.  0.  1.  1.]
+ [ 0.  0.  0.  0.  1.  0.  1.  0.  1.  0.]]</code></pre></div>
+
+<div><pre class="line-numbers"><code class="language-1">[[ 0.  0.  1.  1.  1.  0.  1.  0.  1.  1.  1.  1.  1.  1.]
+ [ 0.  0.  1.  0.  1.  0.  1.  0.  1.  0.  1.  1.  0.  0.]
+ [ 0.  0.  1.  1.  0.  0.  1.  0.  1.  1.  0.  0.  1.  1.]
+ [ 0.  0.  0.  1.  1.  1.  0.  0.  1.  0.  0.  1.  0.  1.]
+ [ 0.  0.  0.  0.  0.  1.  1.  0.  0.  1.  0.  0.  0.  1.]
+ [ 0.  0.  1.  0.  0.  0.  0.  0.  0.  1.  0.  0.  1.  1.]
+ [ 0.  0.  1.  0.  0.  0.  1.  0.  0.  1.  0.  0.  1.  1.]
+ [ 0.  1.  1.  0.  1.  1.  1.  1.  1.  0.  1.  1.  0.  0.]
+ [ 1.  0.  1.  0.  1.  1.  1.  0.  1.  1.  1.  1.  0.  0.]
+ [ 0.  0.  1.  0.  1.  0.  1.  0.  1.  1.  1.  1.  1.  0.]
+ [ 0.  0.  0.  0.  0.  1.  1.  0.  0.  1.  1.  0.  1.  1.]
+ [ 0.  0.  1.  1.  1.  0.  0.  0.  1.  1.  1.  1.  1.  1.]
+ [ 0.  0.  0.  0.  0.  0.  1.  0.  0.  0.  1.  1.  1.  1.]]</code></pre></div>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+Prism.languages.python={"triple-quoted-string":{pattern:/"""[\s\S]+?"""|'''[\s\S]+?'''/,alias:"string"},comment:{pattern:/(^|[^\\])#.*/,lookbehind:!0},string:/("|')(?:\\?.)*?\1/,"function":{pattern:/((?:^|\s)def[ \t]+)[a-zA-Z_][a-zA-Z0-9_]*(?=\()/g,lookbehind:!0},"class-name":{pattern:/(\bclass\s+)[a-z0-9_]+/i,lookbehind:!0},keyword:/\b(?:as|assert|async|await|break|class|continue|def|del|elif|else|except|exec|finally|for|from|global|if|import|in|is|lambda|pass|print|raise|return|try|while|with|yield)\b/,"boolean":/\b(?:True|False)\b/,number:/\b-?(?:0[bo])?(?:(?:\d|0x[\da-f])[\da-f]*\.?\d*|\.\d+)(?:e[+-]?\d+)?j?\b/i,operator:/[-+%=]=?|!=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]|\b(?:or|and|not)\b/,punctuation:/[{}[\];(),.:]/};
+</script>
+
+<script type="text/javascript">
+!function(){"undefined"!=typeof self&&self.Prism&&self.document&&Prism.hooks.add("complete",function(e){if(e.code){var t=e.element.parentNode,s=/\s*\bline-numbers\b\s*/;if(t&&/pre/i.test(t.nodeName)&&(s.test(t.className)||s.test(e.element.className))&&!e.element.querySelector(".line-numbers-rows")){s.test(e.element.className)&&(e.element.className=e.element.className.replace(s,"")),s.test(t.className)||(t.className+=" line-numbers");var n,a=e.code.match(/\n(?!$)/g),l=a?a.length+1:1,m=new Array(l+1);m=m.join("<span></span>"),n=document.createElement("span"),n.className="line-numbers-rows",n.innerHTML=m,t.hasAttribute("data-start")&&(t.style.counterReset="linenumber "+(parseInt(t.getAttribute("data-start"),10)-1)),e.element.appendChild(n)}}})}();
+</script>
+
+<script type="text/javascript">
+!function(){if("undefined"!=typeof self&&self.Prism&&self.document){var e={html:"HTML",xml:"XML",svg:"SVG",mathml:"MathML",css:"CSS",clike:"C-like",javascript:"JavaScript",abap:"ABAP",actionscript:"ActionScript",apacheconf:"Apache Configuration",apl:"APL",applescript:"AppleScript",asciidoc:"AsciiDoc",aspnet:"ASP.NET (C#)",autoit:"AutoIt",autohotkey:"AutoHotkey",basic:"BASIC",csharp:"C#",cpp:"C++",coffeescript:"CoffeeScript","css-extras":"CSS Extras",fsharp:"F#",glsl:"GLSL",http:"HTTP",inform7:"Inform 7",json:"JSON",latex:"LaTeX",lolcode:"LOLCODE",matlab:"MATLAB",mel:"MEL",nasm:"NASM",nginx:"nginx",nsis:"NSIS",objectivec:"Objective-C",ocaml:"OCaml",parigp:"PARI/GP",php:"PHP","php-extras":"PHP Extras",powershell:"PowerShell",jsx:"React JSX",rest:"reST (reStructuredText)",sas:"SAS",sass:"Sass (Sass)",scss:"Sass (Scss)",sql:"SQL",typescript:"TypeScript",vhdl:"VHDL",vim:"vim",wiki:"Wiki markup",yaml:"YAML"};Prism.hooks.add("before-highlight",function(s){var a=s.element.parentNode;if(a&&/pre/i.test(a.nodeName)){var t,i,r=a.getAttribute("data-language")||e[s.language]||s.language.substring(0,1).toUpperCase()+s.language.substring(1),l=a.previousSibling;l&&/\s*\bprism-show-language\b\s*/.test(l.className)&&l.firstChild&&/\s*\bprism-show-language-label\b\s*/.test(l.firstChild.className)?i=l.firstChild:(t=document.createElement("div"),i=document.createElement("div"),i.className="prism-show-language-label",t.className="prism-show-language",t.appendChild(i),a.parentNode.insertBefore(t,a)),i.innerHTML=r}})}}();
+</script>
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>

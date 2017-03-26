@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<title>solution-1-DandC</title>
+
+
+<style type="text/css">
+body {
+  font-family: Monaco, Simsun, Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+<style type="text/css">
+pre.line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre.line-numbers > code {
+	position: relative;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		pointer-events: none;
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+</style>
+
+<style type="text/css">
+div.prism-show-language {
+	position: relative;
+}
+
+div.prism-show-language > div.prism-show-language-label {
+	color: black;
+	background-color: #CFCFCF;
+	display: inline-block;
+	position: absolute;
+	bottom: auto;
+	left: auto;
+	top: 0;
+	right: 0;
+	width: auto;
+	height: auto;
+	font-size: 0.9em;
+	border-radius: 0 0 0 5px;
+	padding: 0 0.5em;
+	text-shadow: none;
+	z-index: 1;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	-webkit-transform: none;
+	-moz-transform: none;
+	-ms-transform: none;
+	-o-transform: none;
+	transform: none;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0"><center>算法设计与分析第一次作业 - 分治策略</center></h1>
+
+<p><center>201628013229058 洪鑫</center></p>
+
+<h2 id="toc_1">问题一 （1）</h2>
+
+<blockquote>
+<p>You are interested in analyzing some hard-to-obtain data from two separate databases. Each database contains n numerical values, so there are \(2n\) values total and you may assume that no two values are the same. You’d like to determine the median of this set of \(2n\) values, which we will define here to be the \(n^{th}\) smallest value.</p>
+
+<p>However, the only way you can access these values is through <em>queries</em> to the databases. In a single query, you can specify a value k to one of the two databases, and the chosen database will return the \(k^{th}\) smallest value that it contains. Since queries are expensive, you would like to compute the median using as few queries as possible.</p>
+
+<p>Give an algorithm that finds the median value using at most \(O(log n)\) queries.</p>
+</blockquote>
+
+<h3 id="toc_2">1. 算法描述与伪代码</h3>
+
+<p>令分离的两个数据库分别为\(A\)和\(B\)。</p>
+
+<p><strong>基本思路：</strong>所求的中值必然在\(A\)的中值和\(B\)的中值之间。基于此，可以划分子问题，子问题也满足同样的规律。</p>
+
+<p><strong>算法：</strong></p>
+
+<ul>
+<li>函数\(Query(D,k)\)用来返回数据库\(D\)中第\(k\)小的数。</li>
+<li>函数\(Median(A,low1,high1,B,low2,high2)\)用来获取数据库\(A\)从\(low1^{th}\)到\(high1^{th}\)的数加上数据库\(B\)从\(low2^{th}\)到\(high2^{th}\)的数的中间值，比如：\(Median(A,1,n,B,1,n)\)即为问题所求。</li>
+</ul>
+
+<p>\(Median(A, low1, high1, B, low2, high2):\)</p>
+
+<pre>
+k1 = (low1 + high1) / 2;    // k1 is the index of median
+1. k2 = (low2 + high2) / 2;
+median1 = Query(A, k1);
+median2 = Query(B, k2);
+
+if Median1 < Median2 then
+    if low1 == high1 && low2 == high2 then
+        return median1;
+    else 
+        if (high1 - low1) is even
+            return Median(A, k1, h1, B, l2, k2); 
+        // make sure left part and right part have equal number of  elements
+        else
+            return Median(A, k1 + 1, h1, B, l2, k2);
+else
+    if low1 == high1 && low2 == high2 then
+        return median2;
+    else
+        if (high1 - low1) is even
+            return Median(A, l1, k1, B, k2, h2);
+        // make sure left part and right part have equal number of  elements
+        else
+            return Median(A, l1, k1, B, k2 + 1, h2);
+</pre>    
+
+<h3 id="toc_3">2.子问题缩减图</h3>
+
+<p><img src="./s1.png" alt=""></p>
+
+<h3 id="toc_4">3. 正确性证明：（归纳法）</h3>
+
+<ol>
+<li>当 \(n=1\)，\(A\)和\(B\)中都只有一个元素，算法返回较小的数，满足问题的要求。</li>
+<li>假设对于\(n\le k-1\)算法得到正确结果。假设\(n\)是偶数，那么对于\(n=k\)。    令\(A\)中的中值为\(m_1\)，\(B\)中的中值为\(m_2\)，\(A+B\)的中值为\(m\)。假设\(m_1 &gt; m_2\)，算法返回\(A[1, {n\over2}]\)和\(B[{n\over 2} + 1, n]\)中所有数的中值。<strong>首先</strong>，有\(m_1 \ge m \ge m_2\)，因为如果\(m &gt; m_1\)，那么\(B\)中\([1, n/2]\)的数都要比\(m\)小，加上\(B\)中\({n\over2}\)个数，至少有\(n\)个数小于\(m\)，违背了中值的定义，同理\(m &lt; m_2\)也不成立。<strong>其次</strong>，根据中值的定义，在\(A[1, {n\over2}]\)和\(B[{n\over 2} + 1, n]\)中，有\({n\over2}\)个数是小于或等于\(m\)的，有\({n\over2}\)个数是大于\(m\)的。而\({n\over2}\in\{1,2,...,n-1\}\)，对于\(n\)是偶数，\(m_1 &lt; m_2\)的情况同理可证。\(m\)满足题目的要求。所以\(n=k\)时满足问题要求。</li>
+</ol>
+
+<p>根据归纳法定义，算法正确。</p>
+
+<h3 id="toc_5">4. 运行时间分析</h3>
+
+<p>每次只会产生一个子问题，问题的大小减半，每个子问题中使用两次查询。所以有：<br>
+\[<br>
+T(n) = <br>
+\begin{cases}<br>
+2,  &amp; {n=1} \\<br>
+T(n/2)+2, &amp; {n \ge 2}<br>
+\end{cases}\\<br>
+\]  </p>
+
+<p>根据主定理，有：\[T(n) = O(logn)\]</p>
+
+<h2 id="toc_6">问题二 （2）</h2>
+
+<blockquote>
+<p>Find the \(k^{th}\) largest element in an unsorted array. Note that it is the \(k^{th}\) largest element in the sorted order, not the \(k^{th}\) distinct element.</p>
+
+<p>INPUT: An unsorted array \(A\) and \(k\).</p>
+
+<p>OUTPUT: The \(k^{th}\) largest element in the unsorted array \(A\).</p>
+</blockquote>
+
+<h3 id="toc_7">1. 算法描述与伪代码</h3>
+
+<p><strong>基本思路：</strong>基于快速排序思想的快速选择方法。首先随机选择一个数作为轴点，所有的数与这个轴点进行比较，分为大小两组。则会出现三种情况：<br>
+1. 大于轴点的数有\(k-1\)个，返回这个轴点<br>
+2. 如果大于轴点的数大于\(k-1\)个，递归调用返回大的那组的第\(k\)大的数<br>
+3. 如果大于轴点的数小于\(k-1\)个，令大的那组个数为\(m\)，递归调用返回小的那组的第\(k-m-1\)大的数。<br>
+<strong>算法：</strong></p>
+
+<p>\(QuickSelect(A, k)\)</p>
+
+<pre>
+if |A| == 1 and k == 1 then
+    return A[1];
+else
+    ERROR;
+end if
+    
+choose a splitter A[j] randomly;
+for i = 0 to n - 1 do
+    if i != j then
+        Put A[i] in S− if A[i] < A[j];
+        Put A[i] in S+ if A[i] >= A[j];
+    end if
+end for
+
+if |S+| == k then
+    return A[j];
+else if |S+| > k then
+    return QuickSelect(S+, k);
+else
+    return QuickSelect(S-, k - |S+| - 1);
+end if
+</pre>
+
+<h3 id="toc_8">2. 子问题缩减图</h3>
+
+<p><img src="./s2.png" alt=""></p>
+
+<h3 id="toc_9">3. 正确性证明（归纳法）</h3>
+
+<ol>
+<li>\(|A|=1,k=1\)时，返回数组第一个元素，满足问题要求。</li>
+<li>\(|A|\le n,k \le d\)时，假设算法正确。
+
+<ul>
+<li>当\(|A|=n+1,k=d\)时，根据算法，第一次运行后出现三种情况。第一种，直接返回轴点，满足问题要求。后两种情况，必然有\(|S+|\le n,|S-|\le n,(k-|S+|-1)&lt;d\) ，根据假设，算法返回正确结果。</li>
+<li>当\(|A|=n,k=d+1\)时，根据算法，递归时出现第一种，直接返回轴点，满足问题要求。出现第三种，必然有\(|S-|\le n,(k-|S+|-1)&lt;d\)，根据假设，算法返回正确结果。假设第二种情况持续发生，因为轴点排除在数组之外，数组大小持续减少，必然在某一时刻，使得\(|S+|=k\)，导致第二种情况不再满足。进而进入第一种或第三种情况，最终得到正确结果。</li>
+</ul></li>
+</ol>
+
+<p>综上所述，根据双重归纳法定义可以证明该算法正确。</p>
+
+<h3 id="toc_10">4. 运行时分析</h3>
+
+<p>与快速排序运行时计算方式同理，可得：</p>
+
+<ul>
+<li>最差情况：（取最大/最小值，每次随机选择的是最小/最大值）\[T(n) \le T(n-1)+cn \Rightarrow T(n)=O(n^2) \]</li>
+<li>理想情况：(轴点总选在在中点处)\[T(n)\le T(n\,/\,2)+cn\Rightarrow T(n)=O(n)\]</li>
+<li>大部分情况：通常轴点在中心点附近，此时依然有\[T(n)=O(n)\]</li>
+</ul>
+
+<h2 id="toc_11">问题三 （3）</h2>
+
+<blockquote>
+<p>Consider an n-node complete binary tree \(T\), where \(n = 2^d − 1\) for some \(d\). Each node \(v\) of \(T\) is labeled with a real number \(x_v\). You may assume that the real numbers labeling the nodes are all distinct. A node \(v\) of \(T\) is a local minimum if the label \(x_v\) is less than the label \(x_w\) for all nodes \(w\) that are joined to \(v\) by an edge.</p>
+
+<p>You are given such a complete binary tree \(T\) , but the labeling is only specified in the following <em>implicit</em> way: for each node \(v\), you can determine the value \(x_v\) by probing the node \(v\). Show how to find a local minimum of \(T\) using only \(O(log\,n)\) probes to the nodes of \(T\) .</p>
+</blockquote>
+
+<h3 id="toc_12">1. 算法描述与伪代码</h3>
+
+<p><strong>基本思路：</strong>对于寻找一个局部最小点的问题，可以转化为探究每个节点的值和两个叶子节点值的最小值，即\(min(this, leave_l, leave_r)\)。如果该节点值为最小，返回该节点为局部最小点。否则，探究值最小的那个节点。</p>
+
+<p><strong>算法：</strong><br>
+- root 表示根节点<br>
+- this表示当前节点，this-&gt;left表示当前节点的左叶子节点，this-&gt;right表示当前节点的右叶子节点<br>
+- porbe(node)返回该节点的值<br>
+- min(a,b,c)返回a,b,c三个节点中值最小的节点<br>
+- \(FindLocalMin(node)\)返回以node为根节点的一个局部最小点，\(FindLocalMin(root)\)即为所求</p>
+
+<p>\(FindLocalMin(node)\)</p>
+
+<pre>
+if node has no leave then
+    return node;
+min_node = min(node, node->left, node->right);
+if min_node == node then
+    return node;
+else
+    return FindLocalMin(min_node);
+</pre>
+
+<p>\(min(a, b, c)\)</p>
+
+<pre>
+valuea = probe(a);
+valueb = probe(b);
+valuec = probe(c);
+
+minimum = a;
+min_value = valuea;
+
+if valueb < min_value then
+    minimum = b;
+    min_value = valueb;
+
+if valuec < min_value then
+    minimum = c;
+    
+return minimum;   
+</pre> 
+
+<h3 id="toc_13">2. 子问题缩减图</h3>
+
+<p><img src="./s3.png" alt=""></p>
+
+<h3 id="toc_14">3. 正确性证明（归纳法）</h3>
+
+<ol>
+<li>当\(d=1\)，根据算法，返回根节点为局部最小点。</li>
+<li>当\(d=n-1\)时，假设算法成立。对于\(d=n\)，根据算法，如果根节点的两个叶子节点的值都比根节点值要大，返回根节点，符合问题要求。如果不是，则寻找以值最小的那个节点为根节点的二叉树，的局部最小点。问题化为求\(d=n-1\)时的问题，根据假设，可以得到局部最小点。</li>
+</ol>
+
+<p>根据归纳法定义，算法正确。</p>
+
+<h3 id="toc_15">4. 运行时间分析</h3>
+
+<p>每次产生一个子问题，每个子问题需要进行三次probe，即获取三个节点的值，有：<br>
+\[<br>
+T(n) = <br>
+\begin{cases}<br>
+1,  &amp; {d=1} \\<br>
+T(n\,/\,2)+3, &amp; {d \ge 2}<br>
+\end{cases}\\<br>
+(n = 2^d - 1)<br>
+\]<br><br>
+根据主定理，可得：<br>
+\[T(n)=O(log\,n)\]</p>
+
+<h2 id="toc_16">问题四 （8）</h2>
+
+<blockquote>
+<p>The attached file Q8.txt contains 100,000 integers between 1 and 100,000 (each row has a single integer), the order of these integers is random and no integer is repeated.</p>
+
+<ol>
+<li><p>Write a program to implement the Sort-and-Count algorithms in your favorite language, find the number of inversions in the given file.</p></li>
+<li><p>In the lecture, we count the number of inversions in O(n log\,n) time, using the Merge-Sort idea. Is it possible to use the Quick-Sort idea instead ?<br>
+If possible, implement the algorithm in your favourite language, run it over the given file, and compare its running time with the one above. If not, give a explanation.</p></li>
+</ol>
+</blockquote>
+
+<h3 id="toc_17">1. python 实现排序计逆序数算法</h3>
+
+<div><pre class="line-numbers"><code class="language-python">from random import randint
+
+
+def sort_and_count(array):
+    &quot;&quot;&quot; Use Merge-Sort Idea to count inversions.
+
+    :param array: target for inversions counting
+    :return:
+        inversion_count: count of inversion pair in array
+        array_sorted: array sorted from small to large
+    &quot;&quot;&quot;
+
+    size = len(array)
+
+    # Stop condition of recursive call:
+    # 1. When array only contains one element, number of inversions is 0
+    #  and return itself.
+    if size == 1:
+        return 0, array
+    # 2. Compare them when array contains two elements
+    #  if contains a inversion, reverse two elements and number set to 1.
+    if size == 2:
+        if array[0] &gt; array[1]:
+            return 1, [array[1], array[0]]  # or array.reverse()
+        else:
+            return 0, array
+
+    # Divide array into left and right parts from the middle.
+    split_location = size / 2
+    array_left = array[:split_location]
+    array_right = array[split_location:]
+
+    # Recursively call to sort_and_count left and right parts.
+    count_left, array_left_sorted = sort_and_count(array_left)
+    count_right, array_right_sorted = sort_and_count(array_right)
+
+    # Merge after recursively call.
+    count_merge, array_sorted \
+        = merge_and_count(array_left_sorted, array_right_sorted)
+
+    # Sum the inversion count of three parts.
+    inversion_count = count_left + count_right + count_merge
+
+    return inversion_count, array_sorted
+
+
+def merge_and_count(array_x, array_y):
+    &quot;&quot;&quot; Merge two sorted array with order and count the number of inversions
+
+    :param array_x: sorted array from small to large order
+    :param array_y: sorted array from small to large order
+    :return:
+        merge_inversion_count: number of inversions between array_x and array_y
+        array_sorted: merge array_x and array_y into one array with order from
+            small to large
+    &quot;&quot;&quot;
+    size_x, size_y = len(array_x), len(array_y)
+    index_x = index_y = 0
+    merge_inversion_count = 0
+    array_sorted = []
+
+    while True:
+        # In this situation, there is no element hasn&#39;t been compared
+        #  in array_x, merge the elements reserved in array_y
+        if index_x &gt;= size_x:
+            array_sorted += array_y[index_y:]
+            break
+
+        # Like the situation above.
+        if index_y &gt;= size_y:
+            array_sorted += array_x[index_x:]
+            break
+
+        # Compare element of array_x and array_y and put smaller element into
+        #  sorted array.
+        # When put an element of array_y into array_sorted, it means every
+        #  element reserved in array_x is bigger than it. Additional
+        #  array_x_reserved_count inversions.
+        if array_x[index_x] &lt; array_y[index_y]:
+            array_sorted.append(array_x[index_x])
+            index_x += 1
+        else:
+            array_sorted.append(array_y[index_y])
+            merge_inversion_count += size_x - index_x
+            index_y += 1
+
+    return merge_inversion_count, array_sorted
+
+
+# Read file and return an array
+def read_file(file_path):
+    f = open(file_path, &#39;r&#39;)
+    content = f.readlines()
+    array = map(int, content)
+    return array
+
+# Run the algorithm
+arr = read_file(&#39;./Q8.txt&#39;)
+print sort_and_count(arr)[0]
+</code></pre></div>
+
+<h3 id="toc_18">2. 运行结果</h3>
+
+<p>2500572073 </p>
+
+<h3 id="toc_19">3. 无法使用快速排序的思想解决该问题</h3>
+
+<p>因为在对元素进行比较分组时，改变了元素的位置，而因改变位置的同时，逆序数数量发生了变化，变化的大小无法获取。所以无法使用快速排序的思想解决问题。</p>
+
+<h2 id="toc_20">问题五 （11）</h2>
+
+<blockquote>
+<p>Implement the Karatsuba algorithm for Multiplication problem in your favourite language, and compare the performance with quadratic grade-school method.</p>
+</blockquote>
+
+<h3 id="toc_21">1. python实现Karatsuba算法</h3>
+
+<div><pre class="line-numbers"><code class="language-python">def karatsuba(x, y):
+    &quot;&quot;&quot; Multiply two numbers with more efficient way than grade school&#39;s
+
+    :param x: number one to multiply
+    :param y: number two to multiply
+    :return: product of x and y
+    &quot;&quot;&quot;
+
+    # maximum length of x and y
+    max_len = max(len(str(x)), len(str(y)))
+
+    # stop condition of recursive call
+    # Stop when one of the value equals 0 or their length equal 1
+    if x == 0 or y == 0:
+        return 0
+    if max_len == 1:
+        return x * y
+
+    # Split x and y into high part and low part
+    # It&#39;s easier for a human
+    splitter = 10 ** (max_len / 2)  # Set the split location
+    x_high = x // splitter
+    x_low = x - x_high * splitter
+    y_high = y // splitter
+    y_low = y - y_high * splitter
+
+    # parts will be used in product computing
+    high_high = karatsuba(x_high, y_high)
+    low_low = karatsuba(x_low, y_low)
+
+    # The trick: grade school multiply twice. Only once in this way
+    # One time multiply to get the result of x_high * y_low + x_low * y_high
+    high_lows = (karatsuba(x_high + x_low, y_high + y_low)
+                 - high_high - low_low)
+
+    # Calculate the product of x and y by using computed parts
+    result = (high_high * (splitter ** 2)
+              + high_lows * splitter + low_low)
+
+    return result
+
+
+print &quot;Input two number:&quot;
+num_a, num_b = map(int, raw_input().split())
+print &quot;Multiple Result: &quot;, karatsuba(num_a, num_b)</code></pre></div>
+
+<h3 id="toc_22">2. 与小学计算方法的性能比较</h3>
+
+<ul>
+<li>小学计算方法：使用了四次乘法 \[T(n)=4T(n\,/\,2)+cn \Rightarrow T(n)=O(n^{log_24})=O(n^2)\]</li>
+<li>Karatsuba算法：使用了三次乘法 \[T(n)=3T(n\,/\,2)+cn \Rightarrow T(n)=O(n^{log_23})=O(n^{1.585})\]</li>
+</ul>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+Prism.languages.python={"triple-quoted-string":{pattern:/"""[\s\S]+?"""|'''[\s\S]+?'''/,alias:"string"},comment:{pattern:/(^|[^\\])#.*/,lookbehind:!0},string:/("|')(?:\\?.)*?\1/,"function":{pattern:/((?:^|\s)def[ \t]+)[a-zA-Z_][a-zA-Z0-9_]*(?=\()/g,lookbehind:!0},"class-name":{pattern:/(\bclass\s+)[a-z0-9_]+/i,lookbehind:!0},keyword:/\b(?:as|assert|async|await|break|class|continue|def|del|elif|else|except|exec|finally|for|from|global|if|import|in|is|lambda|pass|print|raise|return|try|while|with|yield)\b/,"boolean":/\b(?:True|False)\b/,number:/\b-?(?:0[bo])?(?:(?:\d|0x[\da-f])[\da-f]*\.?\d*|\.\d+)(?:e[+-]?\d+)?j?\b/i,operator:/[-+%=]=?|!=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]|\b(?:or|and|not)\b/,punctuation:/[{}[\];(),.:]/};
+</script>
+
+<script type="text/javascript">
+!function(){"undefined"!=typeof self&&self.Prism&&self.document&&Prism.hooks.add("complete",function(e){if(e.code){var t=e.element.parentNode,s=/\s*\bline-numbers\b\s*/;if(t&&/pre/i.test(t.nodeName)&&(s.test(t.className)||s.test(e.element.className))&&!e.element.querySelector(".line-numbers-rows")){s.test(e.element.className)&&(e.element.className=e.element.className.replace(s,"")),s.test(t.className)||(t.className+=" line-numbers");var n,a=e.code.match(/\n(?!$)/g),l=a?a.length+1:1,m=new Array(l+1);m=m.join("<span></span>"),n=document.createElement("span"),n.className="line-numbers-rows",n.innerHTML=m,t.hasAttribute("data-start")&&(t.style.counterReset="linenumber "+(parseInt(t.getAttribute("data-start"),10)-1)),e.element.appendChild(n)}}})}();
+</script>
+
+<script type="text/javascript">
+!function(){if("undefined"!=typeof self&&self.Prism&&self.document){var e={html:"HTML",xml:"XML",svg:"SVG",mathml:"MathML",css:"CSS",clike:"C-like",javascript:"JavaScript",abap:"ABAP",actionscript:"ActionScript",apacheconf:"Apache Configuration",apl:"APL",applescript:"AppleScript",asciidoc:"AsciiDoc",aspnet:"ASP.NET (C#)",autoit:"AutoIt",autohotkey:"AutoHotkey",basic:"BASIC",csharp:"C#",cpp:"C++",coffeescript:"CoffeeScript","css-extras":"CSS Extras",fsharp:"F#",glsl:"GLSL",http:"HTTP",inform7:"Inform 7",json:"JSON",latex:"LaTeX",lolcode:"LOLCODE",matlab:"MATLAB",mel:"MEL",nasm:"NASM",nginx:"nginx",nsis:"NSIS",objectivec:"Objective-C",ocaml:"OCaml",parigp:"PARI/GP",php:"PHP","php-extras":"PHP Extras",powershell:"PowerShell",jsx:"React JSX",rest:"reST (reStructuredText)",sas:"SAS",sass:"Sass (Sass)",scss:"Sass (Scss)",sql:"SQL",typescript:"TypeScript",vhdl:"VHDL",vim:"vim",wiki:"Wiki markup",yaml:"YAML"};Prism.hooks.add("before-highlight",function(s){var a=s.element.parentNode;if(a&&/pre/i.test(a.nodeName)){var t,i,r=a.getAttribute("data-language")||e[s.language]||s.language.substring(0,1).toUpperCase()+s.language.substring(1),l=a.previousSibling;l&&/\s*\bprism-show-language\b\s*/.test(l.className)&&l.firstChild&&/\s*\bprism-show-language-label\b\s*/.test(l.firstChild.className)?i=l.firstChild:(t=document.createElement("div"),i=document.createElement("div"),i.className="prism-show-language-label",t.className="prism-show-language",t.appendChild(i),a.parentNode.insertBefore(t,a)),i.innerHTML=r}})}}();
+</script>
+
+<script type="text/x-mathjax-config">
+if (typeof MathJaxListener !== 'undefined') {
+  MathJax.Hub.Register.StartupHook('End', function () {
+    MathJaxListener.invokeCallbackForKey_('End');
+  });
+}
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>

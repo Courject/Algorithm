@@ -1,0 +1,40 @@
+Problem:    
+Rows:       3
+Columns:    5
+Non-zeros:  9
+Status:     OPTIMAL
+Objective:  max_interval = 5 (MINimum)
+
+   No.   Row name   St   Activity     Lower bound   Upper bound    Marginal
+------ ------------ -- ------------- ------------- ------------- -------------
+     1 c1           NU             0                           0     -0.333333 
+     2 c2           NU             0                           0     -0.333333 
+     3 c3           NU             0                           0     -0.333333 
+
+   No. Column name  St   Activity     Lower bound   Upper bound    Marginal
+------ ------------ -- ------------- ------------- ------------- -------------
+     1 y            B              5             0               
+     2 x2           B             11             8            12 
+     3 x1           NU             6             2             6     -0.333333 
+     4 x3           B             16            14            18 
+     5 x4           NL            21            21            25      0.333333 
+
+Karush-Kuhn-Tucker optimality conditions:
+
+KKT.PE: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+KKT.PB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+KKT.DE: max.abs.err = 0.00e+00 on column 0
+        max.rel.err = 0.00e+00 on column 0
+        High quality
+
+KKT.DB: max.abs.err = 0.00e+00 on row 0
+        max.rel.err = 0.00e+00 on row 0
+        High quality
+
+End of output
